@@ -1,0 +1,140 @@
+My banking app went through three different iterations.
+All three iterations used AI to support development.
+AI used in README file to verify accuracy in terminology and dig deeper into concepts.
+All writing is my own.
+
+Version 1. banking.py 
+--Functionality
+    1. The BankAccount class was created
+    2. The __init__ method initializes the protected instance variables
+    3. Encapsulation was used to modify instance variables within the deposit and withdraw methods
+        *Maintains data integrity by preventing unauthorized changes to the bank account
+    4. The getBalance method returns the balance of the bank account after transactions are completed
+    5. The accountInfoDisplay method prints the account user and authentication number
+    6. Instances of the BankAccount class are called using dot notation with the myAccount object followed by the method name. The specific arguments are inside the parentheses.
+
+--Output
+    The output of banking.py is the passed arguments of the methods encapsulated in the BankAccount class.
+
+    --run-- python banking.py
+    Deposit of $100 made. New balance is $40,100
+    Withdrawal of $500 made. New balance is $39,600  
+    Withdrawal of $1,000 made. New balance is $38,600
+    Account: 47483 (Ryan Hopkins)
+    Current Balance: $38,600.00
+--------------------------------------------------------------------------------------------------------
+
+Version 2. banking2.0.py
+--Added Functions 
+    1. The second iteration of the banking program imports the Tabulate module to display the output in a table.
+    2. A second account was added to demonstrate encapsulation with more than one user.
+        -Protects the private instances (single underscore) from being modified outside the class.
+
+--Troubleshooting
+    When using AI for the transactionHistory method, the transactions were not updating accurately because it kept using the existing instance variables. 
+    
+    I recognized that a new instance variable had to be created to handle the transactions that would be updated to the table. The self._transactions was then called inside the transactionHistory method. 
+
+--Output
+    --run-- python banking2.0.py
+    Deposit of $100 made. New balance is $40,100
+    Withdrawal of $500 made. New balance is $39,600
+    Withdrawal of $1,000 made. New balance is $38,600
+    Account: 47483 (Ryan Hopkins)
+    Initial Balance: $38,600.00
+    +-----------------+--------------+------------+
+    | Account Holder  | Ryan Hopkins |            |
+    +-----------------+--------------+------------+
+    | Account Number  | 47483        |            |
+    +-----------------+--------------+------------+
+    | Action          | Amount       | Balance    |
+    +-----------------+--------------+------------+
+    | Initial Balance |              | $40,000.00 |
+    +-----------------+--------------+------------+
+    | Deposit         | $100         | $40,100.00 |
+    +-----------------+--------------+------------+
+    | Withdrawal      | $500         | $39,600.00 |
+    +-----------------+--------------+------------+
+    | Withdrawal      | $1,000       | $38,600.00 |
+    +-----------------+--------------+------------+
+
+    Deposit of $2,000 made. New balance is $52,000
+    Withdrawal of $1,000 made. New balance is $51,000
+    Account: 12345 (Jane Doe)
+    Initial Balance: $51,000.00
+    +-----------------+----------+------------+
+    | Account Holder  | Jane Doe |            |
+    +-----------------+----------+------------+
+    | Account Number  | 12345    |            |
+    +-----------------+----------+------------+
+    | Action          | Amount   | Balance    |
+    +-----------------+----------+------------+
+    | Initial Balance |          | $50,000.00 |
+    +-----------------+----------+------------+
+    | Deposit         | $2,000   | $52,000.00 |
+    +-----------------+----------+------------+
+    | Withdrawal      | $1,000   | $51,000.00 |
+    +-----------------+----------+------------+
+---------------------------------------------------------------------------------------------------
+
+Version 3. banking3.0.py
+--Added Functions 
+    This iteration of the banking program allows the user to input their deposit and withdrawal information. It features a user friendly interactive interface. 
+
+    A nested while-if-else statement is used to iterate through each of the three accounts in the tuple.
+
+--Example Input-Output
+    --run-- python banking3.0.py
+    Enter 'd' to deposit or 'w' to withdraw for account 47483: d
+    Enter deposit amount: 9000
+    Deposit of $9,000.00 made. New balance is $49,000.00        
+    Enter 'y' to continue making transactions or 'n' to finish: y
+    Enter 'd' to deposit or 'w' to withdraw for account 47483: w
+    Enter withdrawal amount: 100000
+    Insufficient funds
+    Enter 'y' to continue making transactions or 'n' to finish: y
+    Enter 'd' to deposit or 'w' to withdraw for account 47483: w
+    Enter withdrawal amount: 10000
+    Withdrawal of $10,000.00 made. New balance is $39,000.00
+    Enter 'y' to continue making transactions or 'n' to finish: n
+    Account: 47483 (Ryan Hopkins)
+    Initial Balance: $39,000.00
+    +-----------------+--------------+------------+
+    | Account Holder  | Ryan Hopkins |            |
+    +-----------------+--------------+------------+
+    | Account Number  | 47483        |            |
+    +-----------------+--------------+------------+
+    | Action          | Amount       | Balance    |
+    +-----------------+--------------+------------+
+    | Initial Balance |              | $40,000.00 |
+    +-----------------+--------------+------------+
+    | Deposit         | $9,000.00    | $49,000.00 |
+    +-----------------+--------------+------------+
+    | Withdrawal      | $10,000.00   | $39,000.00 |
+    +-----------------+--------------+------------+
+-------------------------------------------------------------------------------------------------
+
+Future Iteration.
+--Added Functions
+    1. Meaningfully color code output for the table
+    2. Make into an Flask app with a create an account and login page that accepts username and password.
+        *A database is necessary to store the account information.
+        *Already created login, registration, and homepage in another Flask app
+            -Stores credentials
+            -Each route interacts with the other pages accordingly
+            -Error messages properly sent
+        
+        MYFLASKPROJECT/
+├── .venv/
+├── instance/
+│   └── proApp.db
+├── static/
+│   └── styles.css
+├── templates/
+│   ├── home.html
+│   ├── login.html
+│   └── register.html
+├── .hintrc
+├── app.py
+└── README
+
